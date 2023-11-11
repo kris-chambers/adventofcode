@@ -23,3 +23,30 @@
 # All numbers in the elves' list are in feet. How many total square feet of 
 # wrapping paper should they order?
 
+wrappingPaperSizes = []
+sortedWrappingPaperSizes = []
+
+inputFile = open("day02input.txt", "r")
+
+def createListFromFile():
+    for line in inputFile:
+        newLine = line.splitlines()
+        for line in newLine:   
+            removeX = line.split("x")
+            stringtoInt = [int(line) for line in removeX]
+            stringtoInt.sort()
+            wrappingPaperSizes.append(stringtoInt)
+    print(wrappingPaperSizes)
+    inputFile.close()
+
+def doTheMath():
+    for box in wrappingPaperSizes:
+        sides1 = 2*(box[0]*box[1])
+        sides2 = 2*(box[1]*box[2])
+        sides3 = 2*(box[0]*box[2])
+        # need to sort after this to figure out the smallest side
+    
+createListFromFile()
+
+
+
