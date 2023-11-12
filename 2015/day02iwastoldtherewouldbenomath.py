@@ -26,6 +26,7 @@
 wrappingPaperSizes = []
 sortedWrappingPaperSizes = []
 
+
 inputFile = open("day02input.txt", "r")
 
 def createListFromFile():
@@ -36,17 +37,21 @@ def createListFromFile():
             stringtoInt = [int(line) for line in removeX]
             stringtoInt.sort()
             wrappingPaperSizes.append(stringtoInt)
-    print(wrappingPaperSizes)
     inputFile.close()
 
 def doTheMath():
+    total = 0
     for box in wrappingPaperSizes:
         sides1 = 2*(box[0]*box[1])
         sides2 = 2*(box[1]*box[2])
         sides3 = 2*(box[0]*box[2])
-        # need to sort after this to figure out the smallest side
+        slack = box[0]*box[1]
+        total = total + sides1 + sides2 + sides3 + slack
+    print(f"The elves need to order {total} square feet of wrapping paper.")
     
+
 createListFromFile()
+doTheMath()
 
 
 
