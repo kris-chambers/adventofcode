@@ -1,16 +1,25 @@
 calibrationDocument = []
 listOfInts = []
-inputFile = open("2023\day01input.txt", "r")
-validDigits = ["one", "two", "three", "four", "five", "six", "seven", "eight"
-               "nine"]
+newList = []
+inputFile = open("day01input.txt", "r")
+validDigits = {"one": "1", "two": "2", "three": "3", "four": "4", "five": "5", 
+               "six": "6", "seven": "7", "eight": "8", "nine": "9"}
 
-def createListFromFile(listName, fileName):   
-    for line in fileName:
-        listName.append(line)
-    fileName.close()
+def createListFromFile():   
+    for line in inputFile:
+        calibrationDocument.append(line)
+    inputFile.close()
     
+def convertWordstoNums():
+    for i, j in validDigits.items():
+        for item in calibrationDocument:
+            convert = item.replace(i, j)
+            newList.append(convert)
+
+    
+
 def removeNonInts():
-    for i in calibrationDocument:
+    for i in newList:
         ints = []
         for character in i:
             if character.isdigit():
@@ -30,6 +39,7 @@ def makeTwoDigitsAndSum():
             
                        
     
-createListFromFile(calibrationDocument, inputFile)
+createListFromFile()
+convertWordstoNums()
 removeNonInts()
 makeTwoDigitsAndSum()
